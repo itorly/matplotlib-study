@@ -16,3 +16,21 @@ fig, axs = plt.subplot_mosaic([['left', 'right_top'],
                                ['left', 'right_bottom']])
 
 plt.show()
+
+# 1.3 Types of inputs to plotting functions
+b = np.matrix([[1, 2], [3, 4]])
+b_asarray = np.asarray(b)
+print('b_asarray=\n', b_asarray)
+
+np.random.seed(19680801)  # seed the random number generator.
+data = {'a': np.arange(50),
+        'c': np.random.randint(0, 50, 50),
+        'd': np.random.randn(50)}
+data['b'] = data['a'] + 10 * np.random.randn(50)
+data['d'] = np.abs(data['d']) * 100
+
+fig, ax = plt.subplots(figsize=(5, 2.7), layout='constrained')
+ax.scatter('a', 'b', c='c', s='d', data=data)
+ax.set_xlabel('entry a')
+ax.set_ylabel('entry b')
+plt.show()
