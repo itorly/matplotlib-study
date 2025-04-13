@@ -68,14 +68,33 @@ import numpy as np
 
 
 # 1.4.1.2 pyplot-style
-x = np.linspace(0, 2, 100)  # Sample data.
+# x = np.linspace(0, 2, 100)  # Sample data.
+#
+# plt.figure(figsize=(5, 2.7), layout='constrained')
+# plt.plot(x, x, label='linear')  # Plot some data on the (implicit) Axes.
+# plt.plot(x, x**2, label='quadratic')  # etc.
+# plt.plot(x, x**3, label='cubic')
+# plt.xlabel('x label')
+# plt.ylabel('y label')
+# plt.title("Simple Plot")
+# plt.legend()
+# plt.show()
 
-plt.figure(figsize=(5, 2.7), layout='constrained')
-plt.plot(x, x, label='linear')  # Plot some data on the (implicit) Axes.
-plt.plot(x, x**2, label='quadratic')  # etc.
-plt.plot(x, x**3, label='cubic')
-plt.xlabel('x label')
-plt.ylabel('y label')
-plt.title("Simple Plot")
-plt.legend()
+# 1.4.2 Making a helper functions
+# 1.4.2.1 wrap Matplotlib methods
+def my_plotter(ax, data1, data2, param_dict):
+    """
+    A helper function to make a graph.
+    """
+    # **kwargs is used in function definitions to capture an arbitrary number of keyword arguments (i.e., named arguments) into a dictionary
+    # passing a dictionary as **kwargs to a function is called dictionary unpacking,
+    # and it allows you to expand a dictionary into keyword arguments
+    out = ax.plot(data1, data2, **param_dict)
+    return out
+
+data1, data2, data3, data4 = np.random.randn(4, 6)  # make 4 random data sets
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(5, 2.7))
+my_plotter(ax1, data1, data2, {'marker': 'x'})
+my_plotter(ax2, data3, data4, {'marker': '+'})
+
 plt.show()
