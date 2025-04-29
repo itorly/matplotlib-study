@@ -87,21 +87,31 @@ import numpy as np
 
 # 1.4.2 Making a helper functions
 # 1.4.2.1 wrap Matplotlib methods
-def my_plotter(ax, data1, data2, param_dict):
-    """
-    A helper function to make a graph.
-    """
-    # **kwargs is used in function definitions to capture an arbitrary number of keyword arguments (i.e., named arguments) into a dictionary
-    # passing a dictionary as **kwargs to a function is called dictionary unpacking,
-    # and it allows you to expand a dictionary into keyword arguments
-    out = ax.plot(data1, data2, **param_dict)
-    return out
+# def my_plotter(ax, data1, data2, param_dict):
+#     """
+#     A helper function to make a graph.
+#     """
+#     # **kwargs is used in function definitions to capture an arbitrary number of keyword arguments (i.e., named arguments) into a dictionary
+#     # passing a dictionary as **kwargs to a function is called dictionary unpacking,
+#     # and it allows you to expand a dictionary into keyword arguments
+#     out = ax.plot(data1, data2, **param_dict)
+#     return out
+#
+# data1, data2, data3, data4 = np.random.randn(4, 6)  # make 4 random data sets
+# fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(5, 2.7))
+# my_plotter(ax1, data1, data2, {'marker': 'x'})
+# my_plotter(ax2, data3, data4, {'marker': '+'})
+#
+# # plt.show()
+# plt.savefig("1.4.2.1 wrap Matplotlib methods.png")
 
-data1, data2, data3, data4 = np.random.randn(4, 6)  # make 4 random data sets
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(5, 2.7))
-my_plotter(ax1, data1, data2, {'marker': 'x'})
-my_plotter(ax2, data3, data4, {'marker': '+'})
 
+# 1.5 Styling Artists
+data1, data2, data3, data4 = np.random.randn(4, 100)  # make 4 random data sets
+fig, ax = plt.subplots(figsize=(5, 2.7))
+x = np.arange(len(data1))
+ax.plot(x, np.cumsum(data1), color='blue', linewidth=3, linestyle='--')
+l, = ax.plot(x, np.cumsum(data2), color='orange', linewidth=2)
+l.set_linestyle(':')
 # plt.show()
-plt.savefig("1.4.2.1 wrap Matplotlib methods.png")
-
+plt.savefig("1.5 Styling Artists.png")
