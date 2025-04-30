@@ -108,7 +108,7 @@ import numpy as np
 
 
 # 1.5 Styling Artists
-# data1, data2, data3, data4 = np.random.randn(4, 100)  # make 4 random data sets
+data1, data2, data3, data4 = np.random.randn(4, 100)  # make 4 random data sets
 # fig, ax = plt.subplots(figsize=(5, 2.7))
 # x = np.arange(len(data1))
 # ax.plot(x, np.cumsum(data1), color='blue', linewidth=3, linestyle='--')
@@ -118,8 +118,17 @@ import numpy as np
 # plt.savefig("1.5 Styling Artists.png")
 
 # 1.5.1 Colors
-data1, data2 = np.random.randn(2, 100)  # make 2 random data sets
+# fig, ax = plt.subplots(figsize=(5, 2.7))
+# ax.scatter(data1, data2, s=50, facecolor='C0', edgecolor='k')
+# # plt.show()
+# plt.savefig("1.5.1 Colors.png")
+
+# 1.5.2 Linewidths, linestyles, and markersizes
 fig, ax = plt.subplots(figsize=(5, 2.7))
-ax.scatter(data1, data2, s=50, facecolor='C0', edgecolor='k')
+ax.plot(data1, 'o', label='data1')
+ax.plot(data2, 'd', label='data2')
+ax.plot(data3, 'v', label='data3')
+ax.plot(data4, 's', label='data4')
+ax.legend()
 # plt.show()
-plt.savefig("1.5.1 Colors.png")
+plt.savefig("1.5.2 Linewidths, linestyles, and markersizes.png")
