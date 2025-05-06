@@ -159,15 +159,25 @@ data1, data2, data3, data4 = np.random.randn(4, 100)  # make 4 random data sets
 
 # 1.6.3 Annotations
 
-fig, ax = plt.subplots(figsize=(5, 2.7))
-
-t = np.arange(0.0, 5.0, 0.01)
-s = np.cos(2 * np.pi * t)
-line, = ax.plot(t, s, lw=2)
-
-ax.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
-            arrowprops=dict(facecolor='black', shrink=0.05))
-
-ax.set_ylim(-2, 2)
+# fig, ax = plt.subplots(figsize=(5, 2.7))
+#
+# t = np.arange(0.0, 5.0, 0.01)
+# s = np.cos(2 * np.pi * t)
+# line, = ax.plot(t, s, lw=2)
+#
+# ax.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
+#             arrowprops=dict(facecolor='black', shrink=0.05))
+#
+# ax.set_ylim(-2, 2)
 # plt.show()
 plt.savefig("1.6.3 Annotations.png")
+
+# 1.6.4 Legends
+
+fig, ax = plt.subplots(figsize=(5, 2.7))
+ax.plot(np.arange(len(data1)), data1, label='data1')
+ax.plot(np.arange(len(data2)), data2, label='data2')
+ax.plot(np.arange(len(data3)), data3, 'd', label='data3')
+ax.legend()
+# plt.show()
+plt.savefig("1.6.4 Legends.png")
